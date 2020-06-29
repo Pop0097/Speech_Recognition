@@ -2,6 +2,8 @@
 
 Machine learning program that recognizes a user's voice.
 
+Note that the images and audio files in the folders are place holders and will be over-written when the program is used. 
+
 # Inspiration
 
 I made this program to learn more about audio processing, TensorFlow, and machine learning. It was inspired by Apple's "Hey Siri."
