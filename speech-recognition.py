@@ -11,7 +11,7 @@ import numpy as np
 import glob
 
 # modules for transforming image
-from tensorflow.python.keras.preprocessing.image import load_img
+from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
 from keras.preprocessing.image import ImageDataGenerator
 
@@ -95,7 +95,7 @@ def create_more_training_data(original_file_name, count):
         ax.axes.get_xaxis().set_visible(False)
         ax.axes.get_yaxis().set_visible(False)
         ax.set_frame_on(False)
-        save_path = "training-images/transformed-image-" + str(count) + "-" + str(i) + ".png"  # creates file path
+        save_path = "training-images/1/transformed-image-" + str(count) + "-" + str(i) + ".png"  # creates file path
         plt.savefig(save_path, dpi=400, bbox_inches="tight", pad_inches=0) # saves .png of transformed image
         # closes plots and figures
         plt.close()
@@ -149,7 +149,7 @@ image_generator = ImageDataGenerator()
 training_generator = image_generator.flow_from_directory(
     training_images_path,
     target_size=(200,200),
-    batch_size=16,
+    batch_size=64,
     class_mode="categorical",
     shuffle=True
 )
@@ -188,17 +188,17 @@ while not(finished):
 
     # sets up image
     image_path = "test.png"
-    current_img = image.load_img(image_path, target_size=(200, 200, 3))  # Resizes image
+    current_img = image.load_img(image_path, target_size=(200, 200, 3)) # Resizes image
     x = image.img_to_array(current_img)
     x = np.expand_dims(x, axis=0)
 
     # stack up images list to pass for prediction
     images = np.vstack([x])
     classes = model.predict(images, batch_size=10) # predicts
-    print(classes)
+    # print(classes)
 
     # prints results for user
-    if classes[0][1] > classes[0][0] and classes[0][1] >= 0.4:
+    if classes[0][1] > classes[0][0] and classes[0][1] >= 0.6:
         print("It is you!")
     else:
         print("It is NOT you!")
