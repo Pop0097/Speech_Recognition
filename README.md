@@ -1,6 +1,6 @@
 # Speech_Recognition
 
-Machine learning program that recognizes a user's voice.
+Machine learning program built using TensorFlow Python that can distinguish when a user says "Hey Pop." 
 
 Note that the images and audio files in the folders are place holders and will be over-written when the program is used.
 
